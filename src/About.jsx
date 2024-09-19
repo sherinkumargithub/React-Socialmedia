@@ -6,7 +6,7 @@ const About = () => {
     <h2>About</h2>
     <p style={{ marginTop: "1rem" }}>Hi, I am
     Sherin Kumar. Together lets make education
-    free for everyone in the world </p>
+    free for everyone in the world using this media.</p>
     </main>
   )
 }

@@ -9,6 +9,7 @@ import Footer from './Footer'
 import { useState, useEffect } from 'react'
 // import Feed from './Feed'
 import {format} from "date-fns"
+import { Routes, Route, useNavigate } from 'react-router-dom'
 
 
 function App() {
@@ -62,8 +63,10 @@ function App() {
   // to handle the handlepost for the updation of the new post toward the existing post
   const [postTitle, setPostTitle] = useState('')
   const [postBody, setPostBody] = useState('')
+  // after deletion of the post the page should navigate to the home page using the useNavigate hook
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handlePost = (e) => {
     e.preventDefault();
     const id = posts.length ? posts[posts.length -1].id + 1 : 1;
     const datetime = format(new Date(), 'MMMM dd, yyyy pp')
@@ -76,6 +79,14 @@ function App() {
     setPostBody('')
 
   }
+
+  // dummu handle delete
+  const handleDelete = (id) => {
+    const postsList = posts.filter(post => post.id !== id);
+    setPosts(postsList)
+    // to redirct to home after deletion of the post
+    navigate('/')
+  }
   return (
     <div className="App">
       <Header title= "Sherin's Media"/>
@@ -83,20 +94,43 @@ function App() {
         search={search}
         setSearch={setSearch}
       />
-      <Home 
-      //  posts = {posts}
-        posts = {searchResult}
-      />
-      <NewPost
-        handleSubmit = {handleSubmit}
-        postTitle = {postTitle}
-        setPostTitle={setPostTitle}
-        postBody = {postBody}
-        setPostBody={setPostBody}
-      />
-      <PostPage/>
-      <About/>
-      <Missing/>
+      <Routes>
+        <Route 
+          path='/'
+          element = {
+            <Home 
+            //  posts = {posts}
+              posts = {searchResult}
+            />
+          }
+        />
+        <Route path='post'>
+          <Route 
+            index
+            element = {
+              <NewPost
+                handlePost = {handlePost}
+                postTitle = {postTitle}
+                setPostTitle={setPostTitle}
+                postBody = {postBody}
+                setPostBody={setPostBody}
+              />
+            }
+          />
+          <Route 
+            path=':id'
+            element = {
+              <PostPage 
+                posts = {posts} 
+                handleDelete = {handleDelete}
+              />
+            }
+          />
+        </Route>
+        {/* <PostPage/> */}
+        <Route path='about'  element = {<About/>}/>
+        <Route path='*' element = {<Missing/>} />
+      </Routes>
       <Footer/>
     </div>
   );
