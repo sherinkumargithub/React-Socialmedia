@@ -1,0 +1,28 @@
+{
+  "posts": [
+    {
+      "id": "2",
+      "title": "2nd post",
+      "date": "1/4/2023",
+      "body": "The post about the Dhardhini birthday"
+    },
+    {
+      "id": "4",
+      "title": "4th post",
+      "date": "1/8/2023",
+      "body": "The post about the college Onam funcion"
+    },
+    {
+      "id": "5",
+      "title": "5th post",
+      "date": "1/9/2023",
+      "body": "The post about the first iterview expirence"
+    },
+    {
+      "id": "51",
+      "title": "va macha",
+      "datetime": "October 14, 2024 5:15:13 AM",
+      "body": "pathu evlo nal aachu ra unna.  epd ra eruka\n"
+    }
+  ]
+}
