@@ -1,7 +1,7 @@
 import {createContext, useState, useEffect} from "react";
 // the missing import section from app.js which need here
 import {format} from "date-fns"
-import { Routes, Route, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import api from "../api/posts"
 import useWindowSize from "../hooks/useWindowSize"
 import useAxiosFetch from '../hooks/useAxiosFetch'
@@ -166,10 +166,7 @@ export const DataProvieder =  ({children}) => {
           try{
             const response = await api.put(`/posts/${id}`, updatedPost)
             // this helps to update the lated id which involve in changes
-            setPosts(posts.map(post => post.id === id ? {
-              ... response.data
-            }: posts
-          ))
+            setPosts(posts.map(post => post.id === id ? {...response.data}: posts))
             setEditTitle('')
             setEditBody('')
             navigate('/')
