@@ -6,19 +6,19 @@ import PostPage from './PostPage'
 import About from './About'
 import Missing from './Missing'
 import Footer from './Footer'
-import { useState, useEffect } from 'react'
+// import { useState, useEffect } from 'react'
 // import Feed from './Feed'
-import {format} from "date-fns"
-import { Routes, Route, useNavigate } from 'react-router-dom'
+// import {format} from "date-fns"
+import { Routes, Route} from 'react-router-dom'
 // axios import
-import api from "./api/posts"
+// import api from "./api/posts"
 import EditPost from './EditPost'
 // Custom Hook
-import useWindowSize from "./hooks/useWindowSize"
+// import useWindowSize from "./hooks/useWindowSize"
 // custom hook -2(for fetch data)
-import useAxiosFetch from './hooks/useAxiosFetch'
+// import useAxiosFetch from './hooks/useAxiosFetch'
 // chp23 - context api
-import DataContext, { DataProvieder } from './context/DataContext'
+import { DataProvieder } from './context/DataContext'
 
 function App() {
   /*
